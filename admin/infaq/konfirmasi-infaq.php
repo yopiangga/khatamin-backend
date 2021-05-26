@@ -132,7 +132,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="./../auth/logout.php" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="./../auth/logout.php">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Keluar
                                 </a>
@@ -184,7 +184,7 @@
                                             <td><?= $infaq['imgInfaq'] ?></td>
                                             <td><?= $infaq['nominal'] ?></td>
                                             <td>
-                                                <a href="" class="badge badge-danger">Hapus</a>
+                                                <a href="./config-delete.php?id=<?= $infaq['id']?>" class="badge badge-danger">Hapus</a>
                                                 <a href="./config-konfirmasi.php?id=<?= $infaq['id']; ?>&nominal=<?= $infaq['nominal']; ?>" class="badge badge-primary">Konfirmasi</a>
                                             </td>
                                         </tr>

@@ -132,7 +132,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="./../auth/logout.php" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="./../auth/logout.php">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Keluar
                                 </a>
@@ -159,7 +159,7 @@
                                             <th>Nama</th>
                                             <th>Tanggal</th>
                                             <th>Nominal</th>
-                                            <th>Aksi</th>
+                                            <!-- <th>Aksi</th> -->
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -168,7 +168,7 @@
                                             <th>Nama</th>
                                             <th>Tanggal</th>
                                             <th>Nominal</th>
-                                            <th>Aksi</th>
+                                            <!-- <th>Aksi</th> -->
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -180,10 +180,10 @@
                                             <td><?= $infaq['name'] ?></td>
                                             <td><?= $infaq['created'] ?></td>
                                             <td><?= $infaq['nominal'] ?></td>
-                                            <td>
+                                            <!-- <td>
                                                 <a href="" class="badge badge-danger">Hapus</a>
                                                 <a href="" class="badge badge-warning">Edit</a>
-                                            </td>
+                                            </td> -->
                                         </tr>
                                         
                                     <?php $i++; } ?>

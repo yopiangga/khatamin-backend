@@ -1,3 +1,49 @@
+<?php
+include './../../config/conn.php';
+
+$id = $_GET['id'];
+
+$sql = "SELECT * FROM kegiatan WHERE id=$id";
+$query = mysqli_query($conn, $sql);
+
+if ($query)
+    $kegiatan = mysqli_fetch_assoc($query);
+
+if (isset($_POST['submit'])) {
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $url = $_POST['url'];
+    $author = $_POST['author'];
+    $created = time();
+
+    // $fileName = $_FILES['image']['name'];
+    // $fileName = time() . $fileName;
+    // $tmpName = $_FILES['image']['tmp_name'];
+    // $path = "./../../img/artikel/";
+    // $filePath = $path . $fileName;
+    // $result = move_uploaded_file($tmpName, $filePath);
+
+    if (true) {
+
+        $sqlUpdate = "UPDATE kegiatan SET title='$title', description='$description', url='$url', author='$author' WHERE id=$id";
+
+        $queryUpdate = mysqli_query($conn, $sqlUpdate);
+        if ($queryUpdate) {
+            header('Location: ./read-kegiatan.php');
+        } else {
+            echo "gagal update";
+            echo mysqli_error($conn);
+        }
+
+        exit;
+    } else {
+        echo "Gagal Upload";
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +55,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Khatamin - Tambah Artikel</title>
+    <title>Khatamin - Edit Kegiatan</title>
 
     <link href="./../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -129,8 +175,7 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="./../auth/logout.php" data-toggle="modal"
-                                    data-target="#logoutModal">
+                                <a class="dropdown-item" href="./../auth/logout.php">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Keluar
                                 </a>
@@ -149,29 +194,29 @@
 
                     <div class="row">
                         <div class="col-lg-6 col-md-12">
-                            <form>
+                            <form action="" method="POST">
                                 <div class="form-group">
                                   <label>Judul Kegiatan</label>
-                                  <input type="text" class="form-control" name="title">
+                                  <input type="text" class="form-control" name="title" value="<?=$kegiatan['title']?>">
                                 </div>
                                 <div class="form-group">
                                   <label>Deskripsi</label>
-                                  <input type="text" class="form-control" name="description">
+                                  <input type="text" class="form-control" name="description" value="<?=$kegiatan['description']?>">
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                   <label>Gambar</label>
                                   <input type="file" class="form-control" name="image">
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                   <label>URL</label>
-                                  <input type="text" class="form-control" name="url">
+                                  <input type="text" class="form-control" name="url" value="<?=$kegiatan['url']?>">
                                 </div>
                                 <div class="form-group">
                                   <label>Author</label>
-                                  <input type="text" class="form-control" name="author">
+                                  <input type="text" class="form-control" name="author" value="<?=$kegiatan['author']?>">
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Tambah Kegiatan</button>
+                                <button type="submit" name="submit" class="btn btn-primary">Update Kegiatan</button>
                               </form>
                         </div>                        
                     </div>
