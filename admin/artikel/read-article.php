@@ -191,8 +191,8 @@
                                             <td><?= $artikel['author'] ?></td>
                                             <td><?= $artikel['created'] ?></td>
                                             <td>
-                                                <a href="" class="badge badge-danger">Hapus</a>
-                                                <a href="" class="badge badge-warning">Edit</a>
+                                                <a href="./config-delete.php?id=<?=$artikel['id']?>" class="badge badge-danger">Hapus</a>
+                                                <a href="./edit-article.php?id=<?=$artikel['id']?>" class="badge badge-warning">Edit</a>
                                             </td>
                                         </tr>
                                         

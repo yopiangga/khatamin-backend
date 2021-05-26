@@ -1,3 +1,26 @@
+<?php
+include './../../config/conn.php';
+
+$sqlMasuk = "SELECT SUM(nominal) AS nominal FROM danamasuk";
+$queryMasuk = mysqli_query($conn, $sqlMasuk);
+$rowMasuk = mysqli_fetch_assoc($queryMasuk);
+$danaMasuk = $rowMasuk['nominal'];
+
+
+$sqlKeluar = "SELECT SUM(nominal) AS nominal FROM danakeluar";
+$queryKeluar = mysqli_query($conn, $sqlKeluar);
+$rowKeluar = mysqli_fetch_assoc($queryKeluar);
+$danaKeluar = $rowKeluar['nominal'];
+
+$danaSisa = $danaMasuk - $danaKeluar;
+
+$sqlKonfirmasi = "SELECT COUNT(id) AS id from infaq where status=0";
+$queryKonfirmasi = mysqli_query($conn, $sqlKonfirmasi);
+$rowKonfirmasi = mysqli_fetch_assoc($queryKonfirmasi);
+$konfirmasi = $rowKonfirmasi['id'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -157,7 +180,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Dana Masuk</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rp 40,000</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rp <?= $danaMasuk?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -175,7 +198,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Dana Keluar </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rp 215,000</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rp <?= $danaKeluar?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -196,7 +219,7 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Rp 50,000</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">Rp <?=$danaSisa ?></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -216,7 +239,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Belum di Konfirmasi</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?=$konfirmasi?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>

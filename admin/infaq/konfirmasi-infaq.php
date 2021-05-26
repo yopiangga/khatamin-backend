@@ -185,7 +185,7 @@
                                             <td><?= $infaq['nominal'] ?></td>
                                             <td>
                                                 <a href="" class="badge badge-danger">Hapus</a>
-                                                <a href="" class="badge badge-warning">Edit</a>
+                                                <a href="./config-konfirmasi.php?id=<?= $infaq['id']; ?>&nominal=<?= $infaq['nominal']; ?>" class="badge badge-primary">Konfirmasi</a>
                                             </td>
                                         </tr>
                                         
